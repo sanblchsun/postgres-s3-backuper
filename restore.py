@@ -21,18 +21,23 @@ BACKUP_KEY_PRIVATE_FILE = os.getenv("BACKUP_KEY_PRIVATE_FILE")
 
 DB_FILENAME = '/tmp/backup_db.sql.gz.enc'
 
-try:
-    connection = psycopg2.connect(
-        f"dbname={DB_NAME} user={DB_USER} host='{DB_HOSTNAME}'")
-    cursor = connection.cursor()
+
+connection = psycopg2.connect(
+    f"dbname={DB_NAME} user={DB_USER} host='{DB_HOSTNAME}'")
+cursor = connection.cursor()
+
+# try:
+#     connection = psycopg2.connect(
+#         f"dbname={DB_NAME} user={DB_USER} host='{DB_HOSTNAME}'")
+#     cursor = connection.cursor()
     
-except Exception as e:
-    print("[INFO] Error while working with PostgreSQL ", e)
-finally:
-    if connection:
-        cursor.close()
-        connection.close()
-        print("[INFO] PostgreSQL connection closed")
+# except Exception as e:
+#     print("[INFO] Error while working with PostgreSQL ", e)
+# finally:
+#     if connection:
+#         cursor.close()
+#         connection.close()
+#         print("[INFO] PostgreSQL connection closed")
 
 
 def say_hello():
